@@ -95,12 +95,12 @@ First build a self-signed certificate on bob and display its fingerprint.
 
 ::
 
-   openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -keyout bob.pem -out bob.pem -nodes -sha256 -days 3650 -subj '/CN=bob'
+   openssl req -x509 -newkey ed25519 -keyout bob.pem -out bob.pem -noenc -sha256 -days 3650 -subj '/CN=bob'
    openssl x509 -noout -sha256 -fingerprint -in bob.pem
 
 and the same on alice::
 
-   openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -keyout alice.pem -out alice.pem -nodes -sha256 -days 3650 -subj '/CN=alice'
+   openssl req -x509 -newkey ed25519 -keyout alice.pem -out alice.pem -noenc -sha256 -days 3650 -subj '/CN=alice'
    openssl x509 -noout -sha256 -fingerprint -in alice.pem
 
 
@@ -132,7 +132,7 @@ On alice::
 
    ping 10.4.0.1
 
-Note: This example use a elliptic curve (`secp384`), which allows
+Note: This example use a elliptic curve (`ed25519`), which allows
 ``--dh`` to be set to ``none``.
 
 Example 3: A tunnel with full PKI and TLS-based security

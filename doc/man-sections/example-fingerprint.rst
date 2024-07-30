@@ -18,7 +18,7 @@ Server setup
 2. Generate a self-signed certificate for the server:
    ::
 
-    openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -keyout server.key -out server.crt -nodes -sha256 -days 3650 -subj '/CN=server'
+    openssl req -x509 -newkey ed25519 -keyout server.key -out server.crt -noenc -sha256 -days 3650 -subj '/CN=server'
 
 3. Generate SHA256 fingerprint of the server certificate
 
@@ -85,7 +85,7 @@ Adding a client
    different name for each client.
    ::
 
-      openssl req -x509 -newkey ec:<(openssl ecparam -name secp384r1) -nodes -sha256 -days 3650 -subj '/CN=alice'
+      openssl req -x509 -newkey ed25519 -noenc -sha256 -days 3650 -subj '/CN=alice'
 
    This generate a certificate and a key for the client. The output of the command will look
    something like this:
